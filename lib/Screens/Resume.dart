@@ -204,7 +204,7 @@ class ResumePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 2.0),
             child: RichText(
               text: TextSpan(
-                style: const TextStyle(fontSize: 16, color: Colors.black),
+                style: const TextStyle(fontSize: 12, color: Colors.black),
                 children: [
                   TextSpan(
                     text: '${parts[0]}:',

@@ -1,4 +1,5 @@
 import 'package:digital_resume/Screens/Resume.dart';
+import 'package:digital_resume/url.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,9 +12,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ResumePage(),
-    );
+    return GetMaterialApp(debugShowCheckedModeBanner: false, home: Url());
   }
 }
