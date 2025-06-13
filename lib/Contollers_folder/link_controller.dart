@@ -32,8 +32,8 @@ class UrlController extends GetxController {
     await launchUrlWithMode(uri, false);
   }
 
-  Future<void> openLink(String url) async {
+  Future<void> openLink(String url, {bool inApp = false}) async {
     final uri = Uri.parse(url);
-    await launchUrlWithMode(uri, false);
+    await launchUrlWithMode(uri, inApp);
   }
 }

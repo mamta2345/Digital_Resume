@@ -1,5 +1,4 @@
 import 'package:digital_resume/Screens/Resume.dart';
-import 'package:digital_resume/url.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

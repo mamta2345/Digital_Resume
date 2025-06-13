@@ -73,6 +73,12 @@ class ResumePage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    // _buildLinkRow(
+                    //   icon: Icons.web,
+                    //   text: 'mamta26121998@gmail.com',
+                    //   url: 'https://mail.google.com',
+                    //   controller: controller,
+                    // ),
                     const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -213,7 +219,7 @@ class ResumePage extends StatelessWidget {
             ),
           );
         } else {
-          return Text(line); // fallback if no colon found
+          return Text(line);
         }
       }).toList(),
     );
