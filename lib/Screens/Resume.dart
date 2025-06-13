@@ -52,33 +52,44 @@ class ResumePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: InkWell(
-                        onTap: () =>
-                            controller.sendEmail('mamta26121998@gmail.com'),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Icon(Icons.email, size: 18, color: Colors.black),
-                            SizedBox(width: 6),
-                            Text(
-                              'mamta26121998@gmail.com',
-                              style: TextStyle(
-                                color: Colors.black,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        final isSmallScreen = constraints.maxWidth < 600;
+
+                        return isSmallScreen
+                            ? const Text(
+                                'mamta26121998@gmail.com',
+                                style: TextStyle(color: Colors.black),
+                              )
+                            : MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: InkWell(
+                                  onTap: () => controller.sendEmail(
+                                    'mamta26121998@gmail.com',
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: const [
+                                      Icon(
+                                        Icons.email,
+                                        size: 18,
+                                        color: Colors.black,
+                                      ),
+                                      SizedBox(width: 6),
+                                      Text(
+                                        'mamta26121998@gmail.com',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                      },
                     ),
-                    // _buildLinkRow(
-                    //   icon: Icons.web,
-                    //   text: 'mamta26121998@gmail.com',
-                    //   url: 'https://mail.google.com',
-                    //   controller: controller,
-                    // ),
+
                     const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
