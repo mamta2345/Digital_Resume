@@ -7,8 +7,7 @@ import 'package:get/get.dart';
 
 class ResumePage extends StatelessWidget {
   ResumePage({super.key});
-  final LinkController controller = Get.put(LinkController());
-  final ContactController controllers = Get.put(ContactController());
+  final UrlController controller = Get.put(UrlController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,68 +27,64 @@ class ResumePage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Wrap(
-                    alignment: WrapAlignment.center,
-                    spacing: 16,
-                    runSpacing: 8,
-                    children: [
-                      MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: InkWell(
-                          onTap: () =>
-                              controllers.makePhoneCall('+917807713653'),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              Icon(Icons.phone, size: 18, color: Colors.black),
-                              SizedBox(width: 6),
-                              Text(
-                                '+91 7807713653',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  decoration: TextDecoration.underline,
-                                ),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 16,
+                  runSpacing: 8,
+                  children: [
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: InkWell(
+                        onTap: () => controller.makePhoneCall('+917807713653'),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: const [
+                            Icon(Icons.phone, size: 18, color: Colors.black),
+                            SizedBox(width: 6),
+                            Text(
+                              '+91 7807713653',
+                              style: TextStyle(
+                                color: Colors.black,
+                                decoration: TextDecoration.underline,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: InkWell(
-                          onTap: () =>
-                              controllers.sendEmail('mamta26121998@gmail.com'),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              Icon(Icons.email, size: 18, color: Colors.black),
-                              SizedBox(width: 6),
-                              Text(
-                                'mamta26121998@gmail.com',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  decoration: TextDecoration.underline,
-                                ),
+                    ),
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: InkWell(
+                        onTap: () =>
+                            controller.sendEmail('mamta26121998@gmail.com'),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: const [
+                            Icon(Icons.email, size: 18, color: Colors.black),
+                            SizedBox(width: 6),
+                            Text(
+                              'mamta26121998@gmail.com',
+                              style: TextStyle(
+                                color: Colors.black,
+                                decoration: TextDecoration.underline,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          Icon(Icons.location_on, size: 18),
-                          SizedBox(width: 6),
-                          Text('Mohali, Punjab'),
-                        ],
-                      ),
-                    ],
-                  ),
+                    ),
+                    const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.location_on, size: 18),
+                        SizedBox(width: 6),
+                        Text('Mohali, Punjab'),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 15),
               Wrap(
                 alignment: WrapAlignment.start,
                 spacing: 24,
@@ -99,11 +94,13 @@ class ResumePage extends StatelessWidget {
                     icon: FontAwesomeIcons.linkedin,
                     text: 'linkedin.com/in/mamta-kumari-178843239/',
                     url: 'https://www.linkedin.com/in/mamta-kumari-178843239/',
+                    controller: controller,
                   ),
                   _buildLinkRow(
                     icon: FontAwesomeIcons.github,
                     text: 'github.com/mamta2345',
                     url: 'https://github.com/mamta2345',
+                    controller: controller,
                   ),
                 ],
               ),
@@ -204,7 +201,7 @@ class ResumePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 2.0),
             child: RichText(
               text: TextSpan(
-                style: const TextStyle(fontSize: 12, color: Colors.black),
+                style: const TextStyle(fontSize: 15, color: Colors.black),
                 children: [
                   TextSpan(
                     text: '${parts[0]}:',
@@ -353,28 +350,24 @@ class ResumePage extends StatelessWidget {
     required IconData icon,
     required String text,
     required String url,
+    required UrlController controller,
   }) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: InkWell(
-        onTap: () => controller.openLink(url),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FaIcon(icon, size: 18, color: Colors.black),
-            const SizedBox(width: 6),
-            Text(
-              text,
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.black,
-                decoration: TextDecoration.underline,
-              ),
-              overflow: TextOverflow.ellipsis,
+    return InkWell(
+      onTap: () => controller.openLink(url),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, size: 20, color: Colors.black),
+          const SizedBox(width: 6),
+          Text(
+            text,
+            style: const TextStyle(
+              color: Colors.black,
+              decoration: TextDecoration.underline,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
